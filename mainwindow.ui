@@ -6,15 +6,25 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>850</width>
-    <height>560</height>
+    <width>1005</width>
+    <height>642</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">QWidget#mainWindow {
+   <string notr="true">QWidget#customWidget {
+        background: rgb(68, 69, 73);
+}
+
+/**********子界面中央背景**********/
+QWidget#centerWidget {
+        background: rgb(50, 50, 50);
+}
+
+/**********主界面样式**********/
+QWidget#mainWindow {
         border: 1px solid rgb(50, 50, 50);
         background: rgb(50, 50, 50);
 }
@@ -45,8 +55,7 @@ StyledWidget {
 
 QProgressIndicator {
         qproperty-color: rgb(175, 175, 175);
-}
-</string>
+}</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <property name="styleSheet">
@@ -57,8 +66,8 @@ QProgressIndicator {
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>841</width>
-      <height>511</height>
+      <width>1011</width>
+      <height>611</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -117,29 +126,13 @@ QTabBar#tabBar::tab:selected {
      <attribute name="title">
       <string>数据查询</string>
      </attribute>
-     <widget class="QLineEdit" name="lineEdit">
-      <property name="geometry">
-       <rect>
-        <x>360</x>
-        <y>390</y>
-        <width>113</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true"> border-radius: 4px;
-        height: 25px;
-        border: 1px solid rgb(100, 100, 100);
-        background: rgb(72, 72, 73);</string>
-      </property>
-     </widget>
      <widget class="QTableView" name="tableView">
       <property name="geometry">
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>661</width>
-        <height>351</height>
+        <width>731</width>
+        <height>381</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -195,105 +188,10 @@ QTableView::indicator:enabled:indeterminate:pressed {
 }</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label">
-      <property name="geometry">
-       <rect>
-        <x>280</x>
-        <y>391</y>
-        <width>54</width>
-        <height>21</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">QLabel#grayLabel {
-        color: rgb(175, 175, 175);
-}
-
-QLabel#highlightLabel {
-        color: rgb(175, 175, 175);
-}
-
-QLabel#redLabel {
-        color: red;
-}
-
-QLabel#grayYaHeiLabel {
-        color: rgb(175, 175, 175);
-        font-size: 16px;
-}
-
-QLabel#blueLabel {
-        color: rgb(0, 160, 230);
-}
-
-QLabel#listLabel {
-        color: rgb(0, 160, 230);
-}
-
-QLabel#lineBlueLabel {
-        background: rgb(0, 160, 230);
-}
-
-QLabel#graySeperateLabel {
-        background: rgb(45, 45, 45);
-}
-
-QLabel#seperateLabel {
-        background: rgb(80, 80, 80);
-}
-
-QLabel#radiusBlueLabel {
-        border-radius: 15px;
-        color: white;
-        font-size: 16px;
-        background: rgb(0, 160, 230);
-}
-
-QLabel#skinLabel[colorProperty=&quot;normal&quot;] {
-        color: rgb(175, 175, 175);
-}
-QLabel#skinLabel[colorProperty=&quot;highlight&quot;] {
-        color: rgb(0, 160, 230);
-}
-
-QLabel#informationLabel {
-        qproperty-pixmap: url(:/Black/information);
-}
-
-QLabel#errorLabel {
-        qproperty-pixmap: url(:/Black/error);
-}
-
-QLabel#successLabel {
-        qproperty-pixmap: url(:/Black/success);
-}
-
-QLabel#questionLabel {
-        qproperty-pixmap: url(:/Black/question);
-}
-
-QLabel#warningLabel {
-        qproperty-pixmap: url(:/Black/warning);
-}
-
-QLabel#groupLabel {
-        color: rgb(0, 160, 230);
-        border: 1px solid rgb(0, 160, 230);
-        font-size: 15px;
-        border-top-color: transparent;
-        border-right-color: transparent;
-        border-left-color: transparent;
-}
-</string>
-      </property>
-      <property name="text">
-       <string>姓名：</string>
-      </property>
-     </widget>
      <widget class="QWidget" name="verticalLayoutWidget">
       <property name="geometry">
        <rect>
-        <x>700</x>
+        <x>780</x>
         <y>10</y>
         <width>131</width>
         <height>341</height>
@@ -776,17 +674,132 @@ QPushButton#transparentButton {
        </item>
       </layout>
      </widget>
-     <widget class="QPushButton" name="pushButton_5">
+     <widget class="QWidget" name="horizontalLayoutWidget_2">
       <property name="geometry">
        <rect>
-        <x>540</x>
-        <y>390</y>
-        <width>75</width>
-        <height>23</height>
+        <x>150</x>
+        <y>400</y>
+        <width>501</width>
+        <height>80</height>
        </rect>
       </property>
-      <property name="styleSheet">
-       <string notr="true">QPushButton{
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <widget class="QLabel" name="label">
+         <property name="styleSheet">
+          <string notr="true">QLabel#grayLabel {
+        color: rgb(175, 175, 175);
+}
+
+QLabel#highlightLabel {
+        color: rgb(175, 175, 175);
+}
+
+QLabel#redLabel {
+        color: red;
+}
+
+QLabel#grayYaHeiLabel {
+        color: rgb(175, 175, 175);
+        font-size: 16px;
+}
+
+QLabel#blueLabel {
+        color: rgb(0, 160, 230);
+}
+
+QLabel#listLabel {
+        color: rgb(0, 160, 230);
+}
+
+QLabel#lineBlueLabel {
+        background: rgb(0, 160, 230);
+}
+
+QLabel#graySeperateLabel {
+        background: rgb(45, 45, 45);
+}
+
+QLabel#seperateLabel {
+        background: rgb(80, 80, 80);
+}
+
+QLabel#radiusBlueLabel {
+        border-radius: 15px;
+        color: white;
+        font-size: 16px;
+        background: rgb(0, 160, 230);
+}
+
+QLabel#skinLabel[colorProperty=&quot;normal&quot;] {
+        color: rgb(175, 175, 175);
+}
+QLabel#skinLabel[colorProperty=&quot;highlight&quot;] {
+        color: rgb(0, 160, 230);
+}
+
+QLabel#informationLabel {
+        qproperty-pixmap: url(:/Black/information);
+}
+
+QLabel#errorLabel {
+        qproperty-pixmap: url(:/Black/error);
+}
+
+QLabel#successLabel {
+        qproperty-pixmap: url(:/Black/success);
+}
+
+QLabel#questionLabel {
+        qproperty-pixmap: url(:/Black/question);
+}
+
+QLabel#warningLabel {
+        qproperty-pixmap: url(:/Black/warning);
+}
+
+QLabel#groupLabel {
+        color: rgb(0, 160, 230);
+        border: 1px solid rgb(0, 160, 230);
+        font-size: 15px;
+        border-top-color: transparent;
+        border-right-color: transparent;
+        border-left-color: transparent;
+}
+</string>
+         </property>
+         <property name="text">
+          <string>姓名：</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="lineEdit">
+         <property name="styleSheet">
+          <string notr="true"> border-radius: 4px;
+        height: 25px;
+        border: 1px solid rgb(100, 100, 100);
+        background: rgb(72, 72, 73);</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_4">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_5">
+         <property name="styleSheet">
+          <string notr="true">QPushButton{
         border-radius: 4px;
         border: none;
         width: 75px;
@@ -856,22 +869,16 @@ QPushButton#linkButton:pressed {
 QPushButton#transparentButton {
         background: transparent;
 }</string>
-      </property>
-      <property name="text">
-       <string>查询</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_6">
-      <property name="geometry">
-       <rect>
-        <x>540</x>
-        <y>430</y>
-        <width>75</width>
-        <height>23</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">QPushButton{
+         </property>
+         <property name="text">
+          <string>查询</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_6">
+         <property name="styleSheet">
+          <string notr="true">QPushButton{
         border-radius: 4px;
         border: none;
         width: 75px;
@@ -941,10 +948,13 @@ QPushButton#linkButton:pressed {
 QPushButton#transparentButton {
         background: transparent;
 }</string>
-      </property>
-      <property name="text">
-       <string>显示全表</string>
-      </property>
+         </property>
+         <property name="text">
+          <string>显示全表</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </widget>
     </widget>
     <widget class="QWidget" name="tab_2">
@@ -1380,7 +1390,7 @@ QPushButton#transparentButton {
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>850</width>
+     <width>1005</width>
      <height>28</height>
     </rect>
    </property>
