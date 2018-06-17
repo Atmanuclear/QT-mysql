@@ -13,7 +13,45 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget#mainWindow {
+        border: 1px solid rgb(50, 50, 50);
+        background: rgb(50, 50, 50);
+}
+
+QWidget#messageWidget {
+        background: rgba(68, 69, 73, 50%);
+}
+
+QWidget#loadingWidget {
+        border: none;
+        border-radius: 5px;
+        background: rgb(50, 50, 50);
+}
+
+QWidget#remoteWidget {
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+        border: 1px solid rgb(45, 45, 45);
+        background: rgb(50, 50, 50);
+}
+
+StyledWidget {
+        qproperty-normalColor: white;
+        qproperty-disableColor: gray;
+        qproperty-highlightColor: rgb(0, 160, 230);
+        qproperty-errorColor: red;
+}
+
+QProgressIndicator {
+        qproperty-color: rgb(175, 175, 175);
+}
+</string>
+  </property>
   <widget class="QWidget" name="centralWidget">
+   <property name="styleSheet">
+    <string notr="true">background: rgba(68, 69, 73, 50%);</string>
+   </property>
    <widget class="QTabWidget" name="tabWidget">
     <property name="geometry">
      <rect>
@@ -23,12 +61,61 @@
       <height>511</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">QTabWidget::pane {
+        border: none;
+        border-top: 3px solid rgb(0, 160, 230);
+        background: rgb(57, 58, 60);
+}
+QTabWidget::tab-bar {
+        border: none;
+}
+QTabBar::tab {
+        border: none;
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
+        color: rgb(175, 175, 175);
+        background: rgb(255, 255, 255, 30);
+        height: 28px;
+        min-width: 85px;
+        margin-right: 5px;
+        padding-left: 5px;
+        padding-right: 5px;
+}
+QTabBar::tab:hover {
+        background: rgb(255, 255, 255, 40);
+}
+QTabBar::tab:selected {
+        color: white;
+        background: rgb(0, 160, 230);
+}
+
+QTabWidget#tabWidget::pane {
+        border: 1px solid rgb(45, 45, 45);
+        background: rgb(57, 58, 60);
+        margin-top: -1px;
+}
+
+QTabBar#tabBar::tab {
+        border: 1px solid rgb(45, 45, 45);
+        border-bottom: none;
+        background: transparent;
+}
+QTabBar#tabBar::tab:hover {
+        color: white;
+}
+QTabBar#tabBar::tab:selected {
+        color: white;
+        background: rgb(57, 58, 60);
+}
+</string>
+    </property>
     <property name="currentIndex">
      <number>0</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
-      <string>Tab 1</string>
+      <string>数据查询</string>
      </attribute>
      <widget class="QLineEdit" name="lineEdit">
       <property name="geometry">
@@ -38,6 +125,12 @@
         <width>113</width>
         <height>20</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"> border-radius: 4px;
+        height: 25px;
+        border: 1px solid rgb(100, 100, 100);
+        background: rgb(72, 72, 73);</string>
       </property>
      </widget>
      <widget class="QTableView" name="tableView">
@@ -49,15 +142,149 @@
         <height>351</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">QTableView {
+        border: 1px solid rgb(45, 45, 45);
+        background: rgb(57, 58, 60);
+        gridline-color: rgb(60, 60, 60);
+}
+QTableView::item {
+        padding-left: 5px;
+        padding-right: 5px;
+        border: none;
+        background: rgb(72, 72, 74);
+        border-right: 1px solid rgb(45, 45, 45);
+        border-bottom: 1px solid rgb(45, 45, 45);
+}
+QTableView::item:selected {
+        background: rgba(255, 255, 255, 40);
+}
+QTableView::item:selected:!active {
+        color: white;
+}
+QTableView::indicator {
+        width: 20px;
+        height: 20px;
+}
+QTableView::indicator:enabled:unchecked {
+        image: url(:/Black/checkBox);
+}
+QTableView::indicator:enabled:unchecked:hover {
+        image: url(:/Black/checkBoxHover);
+}
+QTableView::indicator:enabled:unchecked:pressed {
+        image: url(:/Black/checkBoxPressed);
+}
+QTableView::indicator:enabled:checked {
+        image: url(:/Black/checkBoxChecked);
+}
+QTableView::indicator:enabled:checked:hover {
+        image: url(:/Black/checkBoxCheckedHover);
+}
+QTableView::indicator:enabled:checked:pressed {
+        image: url(:/Black/checkBoxCheckedPressed);
+}
+QTableView::indicator:enabled:indeterminate {
+        image: url(:/Black/checkBoxIndeterminate);
+}
+QTableView::indicator:enabled:indeterminate:hover {
+        image: url(:/Black/checkBoxIndeterminateHover);
+}
+QTableView::indicator:enabled:indeterminate:pressed {
+        image: url(:/Black/checkBoxIndeterminatePressed);
+}</string>
+      </property>
      </widget>
      <widget class="QLabel" name="label">
       <property name="geometry">
        <rect>
         <x>280</x>
-        <y>400</y>
+        <y>391</y>
         <width>54</width>
-        <height>12</height>
+        <height>21</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel#grayLabel {
+        color: rgb(175, 175, 175);
+}
+
+QLabel#highlightLabel {
+        color: rgb(175, 175, 175);
+}
+
+QLabel#redLabel {
+        color: red;
+}
+
+QLabel#grayYaHeiLabel {
+        color: rgb(175, 175, 175);
+        font-size: 16px;
+}
+
+QLabel#blueLabel {
+        color: rgb(0, 160, 230);
+}
+
+QLabel#listLabel {
+        color: rgb(0, 160, 230);
+}
+
+QLabel#lineBlueLabel {
+        background: rgb(0, 160, 230);
+}
+
+QLabel#graySeperateLabel {
+        background: rgb(45, 45, 45);
+}
+
+QLabel#seperateLabel {
+        background: rgb(80, 80, 80);
+}
+
+QLabel#radiusBlueLabel {
+        border-radius: 15px;
+        color: white;
+        font-size: 16px;
+        background: rgb(0, 160, 230);
+}
+
+QLabel#skinLabel[colorProperty=&quot;normal&quot;] {
+        color: rgb(175, 175, 175);
+}
+QLabel#skinLabel[colorProperty=&quot;highlight&quot;] {
+        color: rgb(0, 160, 230);
+}
+
+QLabel#informationLabel {
+        qproperty-pixmap: url(:/Black/information);
+}
+
+QLabel#errorLabel {
+        qproperty-pixmap: url(:/Black/error);
+}
+
+QLabel#successLabel {
+        qproperty-pixmap: url(:/Black/success);
+}
+
+QLabel#questionLabel {
+        qproperty-pixmap: url(:/Black/question);
+}
+
+QLabel#warningLabel {
+        qproperty-pixmap: url(:/Black/warning);
+}
+
+QLabel#groupLabel {
+        color: rgb(0, 160, 230);
+        border: 1px solid rgb(0, 160, 230);
+        font-size: 15px;
+        border-top-color: transparent;
+        border-right-color: transparent;
+        border-left-color: transparent;
+}
+</string>
       </property>
       <property name="text">
        <string>姓名：</string>
@@ -75,6 +302,78 @@
       <layout class="QVBoxLayout" name="verticalLayout">
        <item>
         <widget class="QPushButton" name="pushButton_2">
+         <property name="styleSheet">
+          <string notr="true">QPushButton{
+        border-radius: 4px;
+        border: none;
+        width: 75px;
+        height: 25px;
+}
+QPushButton:enabled {
+        background: rgb(68, 69, 73);
+        color: white;
+}
+QPushButton:!enabled {
+        background: rgb(100, 100, 100);
+        color: rgb(200, 200, 200);
+}
+QPushButton:enabled:hover{
+        background: rgb(85, 85, 85);
+}
+QPushButton:enabled:pressed{
+        background: rgb(80, 80, 80);
+}
+
+QPushButton#blueButton {
+        color: white;
+}
+QPushButton#blueButton:enabled {
+        background: rgb(0, 165, 235);
+        color: white;
+}
+QPushButton#blueButton:!enabled {
+        background: gray;
+        color: rgb(200, 200, 200);
+}
+QPushButton#blueButton:enabled:hover {
+        background: rgb(0, 180, 255);
+}
+QPushButton#blueButton:enabled:pressed {
+        background: rgb(0, 140, 215);
+}
+
+QPushButton#selectButton {
+        border: none;
+        border-radius: none;
+        border-left: 1px solid rgb(100, 100, 100);
+        image: url(:/Black/scan);
+        background: transparent;
+        color: white;
+}
+QPushButton#selectButton:enabled:hover{
+        background: rgb(85, 85, 85);
+}
+QPushButton#selectButton:enabled:pressed{
+        background: rgb(80, 80, 80);
+}
+
+QPushButton#linkButton {
+        background: transparent;
+        color: rgb(0, 160, 230);
+        text-align:left;
+}
+QPushButton#linkButton:hover {
+        color: rgb(20, 185, 255);
+        text-decoration: underline;
+}
+QPushButton#linkButton:pressed {
+        color: rgb(0, 160, 230);
+}
+
+QPushButton#transparentButton {
+        background: transparent;
+}</string>
+         </property>
          <property name="text">
           <string>撤销修改</string>
          </property>
@@ -82,6 +381,78 @@
        </item>
        <item>
         <widget class="QPushButton" name="pushButton">
+         <property name="styleSheet">
+          <string notr="true">QPushButton{
+        border-radius: 4px;
+        border: none;
+        width: 75px;
+        height: 25px;
+}
+QPushButton:enabled {
+        background: rgb(68, 69, 73);
+        color: white;
+}
+QPushButton:!enabled {
+        background: rgb(100, 100, 100);
+        color: rgb(200, 200, 200);
+}
+QPushButton:enabled:hover{
+        background: rgb(85, 85, 85);
+}
+QPushButton:enabled:pressed{
+        background: rgb(80, 80, 80);
+}
+
+QPushButton#blueButton {
+        color: white;
+}
+QPushButton#blueButton:enabled {
+        background: rgb(0, 165, 235);
+        color: white;
+}
+QPushButton#blueButton:!enabled {
+        background: gray;
+        color: rgb(200, 200, 200);
+}
+QPushButton#blueButton:enabled:hover {
+        background: rgb(0, 180, 255);
+}
+QPushButton#blueButton:enabled:pressed {
+        background: rgb(0, 140, 215);
+}
+
+QPushButton#selectButton {
+        border: none;
+        border-radius: none;
+        border-left: 1px solid rgb(100, 100, 100);
+        image: url(:/Black/scan);
+        background: transparent;
+        color: white;
+}
+QPushButton#selectButton:enabled:hover{
+        background: rgb(85, 85, 85);
+}
+QPushButton#selectButton:enabled:pressed{
+        background: rgb(80, 80, 80);
+}
+
+QPushButton#linkButton {
+        background: transparent;
+        color: rgb(0, 160, 230);
+        text-align:left;
+}
+QPushButton#linkButton:hover {
+        color: rgb(20, 185, 255);
+        text-decoration: underline;
+}
+QPushButton#linkButton:pressed {
+        color: rgb(0, 160, 230);
+}
+
+QPushButton#transparentButton {
+        background: transparent;
+}</string>
+         </property>
          <property name="text">
           <string>提交修改</string>
          </property>
@@ -89,6 +460,78 @@
        </item>
        <item>
         <widget class="QPushButton" name="pushButton_3">
+         <property name="styleSheet">
+          <string notr="true">QPushButton{
+        border-radius: 4px;
+        border: none;
+        width: 75px;
+        height: 25px;
+}
+QPushButton:enabled {
+        background: rgb(68, 69, 73);
+        color: white;
+}
+QPushButton:!enabled {
+        background: rgb(100, 100, 100);
+        color: rgb(200, 200, 200);
+}
+QPushButton:enabled:hover{
+        background: rgb(85, 85, 85);
+}
+QPushButton:enabled:pressed{
+        background: rgb(80, 80, 80);
+}
+
+QPushButton#blueButton {
+        color: white;
+}
+QPushButton#blueButton:enabled {
+        background: rgb(0, 165, 235);
+        color: white;
+}
+QPushButton#blueButton:!enabled {
+        background: gray;
+        color: rgb(200, 200, 200);
+}
+QPushButton#blueButton:enabled:hover {
+        background: rgb(0, 180, 255);
+}
+QPushButton#blueButton:enabled:pressed {
+        background: rgb(0, 140, 215);
+}
+
+QPushButton#selectButton {
+        border: none;
+        border-radius: none;
+        border-left: 1px solid rgb(100, 100, 100);
+        image: url(:/Black/scan);
+        background: transparent;
+        color: white;
+}
+QPushButton#selectButton:enabled:hover{
+        background: rgb(85, 85, 85);
+}
+QPushButton#selectButton:enabled:pressed{
+        background: rgb(80, 80, 80);
+}
+
+QPushButton#linkButton {
+        background: transparent;
+        color: rgb(0, 160, 230);
+        text-align:left;
+}
+QPushButton#linkButton:hover {
+        color: rgb(20, 185, 255);
+        text-decoration: underline;
+}
+QPushButton#linkButton:pressed {
+        color: rgb(0, 160, 230);
+}
+
+QPushButton#transparentButton {
+        background: transparent;
+}</string>
+         </property>
          <property name="text">
           <string>添加记录</string>
          </property>
@@ -96,6 +539,78 @@
        </item>
        <item>
         <widget class="QPushButton" name="pushButton_4">
+         <property name="styleSheet">
+          <string notr="true">QPushButton{
+        border-radius: 4px;
+        border: none;
+        width: 75px;
+        height: 25px;
+}
+QPushButton:enabled {
+        background: rgb(68, 69, 73);
+        color: white;
+}
+QPushButton:!enabled {
+        background: rgb(100, 100, 100);
+        color: rgb(200, 200, 200);
+}
+QPushButton:enabled:hover{
+        background: rgb(85, 85, 85);
+}
+QPushButton:enabled:pressed{
+        background: rgb(80, 80, 80);
+}
+
+QPushButton#blueButton {
+        color: white;
+}
+QPushButton#blueButton:enabled {
+        background: rgb(0, 165, 235);
+        color: white;
+}
+QPushButton#blueButton:!enabled {
+        background: gray;
+        color: rgb(200, 200, 200);
+}
+QPushButton#blueButton:enabled:hover {
+        background: rgb(0, 180, 255);
+}
+QPushButton#blueButton:enabled:pressed {
+        background: rgb(0, 140, 215);
+}
+
+QPushButton#selectButton {
+        border: none;
+        border-radius: none;
+        border-left: 1px solid rgb(100, 100, 100);
+        image: url(:/Black/scan);
+        background: transparent;
+        color: white;
+}
+QPushButton#selectButton:enabled:hover{
+        background: rgb(85, 85, 85);
+}
+QPushButton#selectButton:enabled:pressed{
+        background: rgb(80, 80, 80);
+}
+
+QPushButton#linkButton {
+        background: transparent;
+        color: rgb(0, 160, 230);
+        text-align:left;
+}
+QPushButton#linkButton:hover {
+        color: rgb(20, 185, 255);
+        text-decoration: underline;
+}
+QPushButton#linkButton:pressed {
+        color: rgb(0, 160, 230);
+}
+
+QPushButton#transparentButton {
+        background: transparent;
+}</string>
+         </property>
          <property name="text">
           <string>删除选中行</string>
          </property>
@@ -103,6 +618,78 @@
        </item>
        <item>
         <widget class="QPushButton" name="pushButton_7">
+         <property name="styleSheet">
+          <string notr="true">QPushButton{
+        border-radius: 4px;
+        border: none;
+        width: 75px;
+        height: 25px;
+}
+QPushButton:enabled {
+        background: rgb(68, 69, 73);
+        color: white;
+}
+QPushButton:!enabled {
+        background: rgb(100, 100, 100);
+        color: rgb(200, 200, 200);
+}
+QPushButton:enabled:hover{
+        background: rgb(85, 85, 85);
+}
+QPushButton:enabled:pressed{
+        background: rgb(80, 80, 80);
+}
+
+QPushButton#blueButton {
+        color: white;
+}
+QPushButton#blueButton:enabled {
+        background: rgb(0, 165, 235);
+        color: white;
+}
+QPushButton#blueButton:!enabled {
+        background: gray;
+        color: rgb(200, 200, 200);
+}
+QPushButton#blueButton:enabled:hover {
+        background: rgb(0, 180, 255);
+}
+QPushButton#blueButton:enabled:pressed {
+        background: rgb(0, 140, 215);
+}
+
+QPushButton#selectButton {
+        border: none;
+        border-radius: none;
+        border-left: 1px solid rgb(100, 100, 100);
+        image: url(:/Black/scan);
+        background: transparent;
+        color: white;
+}
+QPushButton#selectButton:enabled:hover{
+        background: rgb(85, 85, 85);
+}
+QPushButton#selectButton:enabled:pressed{
+        background: rgb(80, 80, 80);
+}
+
+QPushButton#linkButton {
+        background: transparent;
+        color: rgb(0, 160, 230);
+        text-align:left;
+}
+QPushButton#linkButton:hover {
+        color: rgb(20, 185, 255);
+        text-decoration: underline;
+}
+QPushButton#linkButton:pressed {
+        color: rgb(0, 160, 230);
+}
+
+QPushButton#transparentButton {
+        background: transparent;
+}</string>
+         </property>
          <property name="text">
           <string>按id升序排序</string>
          </property>
@@ -110,6 +697,78 @@
        </item>
        <item>
         <widget class="QPushButton" name="pushButton_8">
+         <property name="styleSheet">
+          <string notr="true">QPushButton{
+        border-radius: 4px;
+        border: none;
+        width: 75px;
+        height: 25px;
+}
+QPushButton:enabled {
+        background: rgb(68, 69, 73);
+        color: white;
+}
+QPushButton:!enabled {
+        background: rgb(100, 100, 100);
+        color: rgb(200, 200, 200);
+}
+QPushButton:enabled:hover{
+        background: rgb(85, 85, 85);
+}
+QPushButton:enabled:pressed{
+        background: rgb(80, 80, 80);
+}
+
+QPushButton#blueButton {
+        color: white;
+}
+QPushButton#blueButton:enabled {
+        background: rgb(0, 165, 235);
+        color: white;
+}
+QPushButton#blueButton:!enabled {
+        background: gray;
+        color: rgb(200, 200, 200);
+}
+QPushButton#blueButton:enabled:hover {
+        background: rgb(0, 180, 255);
+}
+QPushButton#blueButton:enabled:pressed {
+        background: rgb(0, 140, 215);
+}
+
+QPushButton#selectButton {
+        border: none;
+        border-radius: none;
+        border-left: 1px solid rgb(100, 100, 100);
+        image: url(:/Black/scan);
+        background: transparent;
+        color: white;
+}
+QPushButton#selectButton:enabled:hover{
+        background: rgb(85, 85, 85);
+}
+QPushButton#selectButton:enabled:pressed{
+        background: rgb(80, 80, 80);
+}
+
+QPushButton#linkButton {
+        background: transparent;
+        color: rgb(0, 160, 230);
+        text-align:left;
+}
+QPushButton#linkButton:hover {
+        color: rgb(20, 185, 255);
+        text-decoration: underline;
+}
+QPushButton#linkButton:pressed {
+        color: rgb(0, 160, 230);
+}
+
+QPushButton#transparentButton {
+        background: transparent;
+}</string>
+         </property>
          <property name="text">
           <string>按id降序排序</string>
          </property>
@@ -126,6 +785,78 @@
         <height>23</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+        border-radius: 4px;
+        border: none;
+        width: 75px;
+        height: 25px;
+}
+QPushButton:enabled {
+        background: rgb(68, 69, 73);
+        color: white;
+}
+QPushButton:!enabled {
+        background: rgb(100, 100, 100);
+        color: rgb(200, 200, 200);
+}
+QPushButton:enabled:hover{
+        background: rgb(85, 85, 85);
+}
+QPushButton:enabled:pressed{
+        background: rgb(80, 80, 80);
+}
+
+QPushButton#blueButton {
+        color: white;
+}
+QPushButton#blueButton:enabled {
+        background: rgb(0, 165, 235);
+        color: white;
+}
+QPushButton#blueButton:!enabled {
+        background: gray;
+        color: rgb(200, 200, 200);
+}
+QPushButton#blueButton:enabled:hover {
+        background: rgb(0, 180, 255);
+}
+QPushButton#blueButton:enabled:pressed {
+        background: rgb(0, 140, 215);
+}
+
+QPushButton#selectButton {
+        border: none;
+        border-radius: none;
+        border-left: 1px solid rgb(100, 100, 100);
+        image: url(:/Black/scan);
+        background: transparent;
+        color: white;
+}
+QPushButton#selectButton:enabled:hover{
+        background: rgb(85, 85, 85);
+}
+QPushButton#selectButton:enabled:pressed{
+        background: rgb(80, 80, 80);
+}
+
+QPushButton#linkButton {
+        background: transparent;
+        color: rgb(0, 160, 230);
+        text-align:left;
+}
+QPushButton#linkButton:hover {
+        color: rgb(20, 185, 255);
+        text-decoration: underline;
+}
+QPushButton#linkButton:pressed {
+        color: rgb(0, 160, 230);
+}
+
+QPushButton#transparentButton {
+        background: transparent;
+}</string>
+      </property>
       <property name="text">
        <string>查询</string>
       </property>
@@ -139,14 +870,97 @@
         <height>23</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+        border-radius: 4px;
+        border: none;
+        width: 75px;
+        height: 25px;
+}
+QPushButton:enabled {
+        background: rgb(68, 69, 73);
+        color: white;
+}
+QPushButton:!enabled {
+        background: rgb(100, 100, 100);
+        color: rgb(200, 200, 200);
+}
+QPushButton:enabled:hover{
+        background: rgb(85, 85, 85);
+}
+QPushButton:enabled:pressed{
+        background: rgb(80, 80, 80);
+}
+
+QPushButton#blueButton {
+        color: white;
+}
+QPushButton#blueButton:enabled {
+        background: rgb(0, 165, 235);
+        color: white;
+}
+QPushButton#blueButton:!enabled {
+        background: gray;
+        color: rgb(200, 200, 200);
+}
+QPushButton#blueButton:enabled:hover {
+        background: rgb(0, 180, 255);
+}
+QPushButton#blueButton:enabled:pressed {
+        background: rgb(0, 140, 215);
+}
+
+QPushButton#selectButton {
+        border: none;
+        border-radius: none;
+        border-left: 1px solid rgb(100, 100, 100);
+        image: url(:/Black/scan);
+        background: transparent;
+        color: white;
+}
+QPushButton#selectButton:enabled:hover{
+        background: rgb(85, 85, 85);
+}
+QPushButton#selectButton:enabled:pressed{
+        background: rgb(80, 80, 80);
+}
+
+QPushButton#linkButton {
+        background: transparent;
+        color: rgb(0, 160, 230);
+        text-align:left;
+}
+QPushButton#linkButton:hover {
+        color: rgb(20, 185, 255);
+        text-decoration: underline;
+}
+QPushButton#linkButton:pressed {
+        color: rgb(0, 160, 230);
+}
+
+QPushButton#transparentButton {
+        background: transparent;
+}</string>
+      </property>
       <property name="text">
        <string>显示全表</string>
       </property>
      </widget>
     </widget>
     <widget class="QWidget" name="tab_2">
+     <property name="styleSheet">
+      <string notr="true">QWidget#customWidget {
+        background: rgb(68, 69, 73);
+}
+
+/**********子界面中央背景**********/
+QWidget#centerWidget {
+        background: rgb(50, 50, 50);
+}
+</string>
+     </property>
      <attribute name="title">
-      <string>Tab 2</string>
+      <string>学生课表</string>
      </attribute>
      <widget class="QTableView" name="tableView_2">
       <property name="geometry">
@@ -156,6 +970,59 @@
         <width>541</width>
         <height>311</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QTableView {
+        border: 1px solid rgb(45, 45, 45);
+        background: rgb(57, 58, 60);
+        gridline-color: rgb(60, 60, 60);
+}
+QTableView::item {
+        padding-left: 5px;
+        padding-right: 5px;
+        border: none;
+        background: rgb(72, 72, 74);
+        border-right: 1px solid rgb(45, 45, 45);
+        border-bottom: 1px solid rgb(45, 45, 45);
+}
+QTableView::item:selected {
+        background: rgba(255, 255, 255, 40);
+}
+QTableView::item:selected:!active {
+        color: white;
+}
+QTableView::indicator {
+        width: 20px;
+        height: 20px;
+}
+QTableView::indicator:enabled:unchecked {
+        image: url(:/Black/checkBox);
+}
+QTableView::indicator:enabled:unchecked:hover {
+        image: url(:/Black/checkBoxHover);
+}
+QTableView::indicator:enabled:unchecked:pressed {
+        image: url(:/Black/checkBoxPressed);
+}
+QTableView::indicator:enabled:checked {
+        image: url(:/Black/checkBoxChecked);
+}
+QTableView::indicator:enabled:checked:hover {
+        image: url(:/Black/checkBoxCheckedHover);
+}
+QTableView::indicator:enabled:checked:pressed {
+        image: url(:/Black/checkBoxCheckedPressed);
+}
+QTableView::indicator:enabled:indeterminate {
+        image: url(:/Black/checkBoxIndeterminate);
+}
+QTableView::indicator:enabled:indeterminate:hover {
+        image: url(:/Black/checkBoxIndeterminateHover);
+}
+QTableView::indicator:enabled:indeterminate:pressed {
+        image: url(:/Black/checkBoxIndeterminatePressed);
+}
+</string>
       </property>
      </widget>
      <widget class="QWidget" name="horizontalLayoutWidget">
@@ -170,13 +1037,102 @@
       <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
         <widget class="QLabel" name="label_2">
+         <property name="styleSheet">
+          <string notr="true">QLabel#grayLabel {
+        color: rgb(175, 175, 175);
+}
+
+QLabel#highlightLabel {
+        color: rgb(175, 175, 175);
+}
+
+QLabel#redLabel {
+        color: red;
+}
+
+QLabel#grayYaHeiLabel {
+        color: rgb(175, 175, 175);
+        font-size: 16px;
+}
+
+QLabel#blueLabel {
+        color: rgb(0, 160, 230);
+}
+
+QLabel#listLabel {
+        color: rgb(0, 160, 230);
+}
+
+QLabel#lineBlueLabel {
+        background: rgb(0, 160, 230);
+}
+
+QLabel#graySeperateLabel {
+        background: rgb(45, 45, 45);
+}
+
+QLabel#seperateLabel {
+        background: rgb(80, 80, 80);
+}
+
+QLabel#radiusBlueLabel {
+        border-radius: 15px;
+        color: white;
+        font-size: 16px;
+        background: rgb(0, 160, 230);
+}
+
+QLabel#skinLabel[colorProperty=&quot;normal&quot;] {
+        color: rgb(175, 175, 175);
+}
+QLabel#skinLabel[colorProperty=&quot;highlight&quot;] {
+        color: rgb(0, 160, 230);
+}
+
+QLabel#informationLabel {
+        qproperty-pixmap: url(:/Black/information);
+}
+
+QLabel#errorLabel {
+        qproperty-pixmap: url(:/Black/error);
+}
+
+QLabel#successLabel {
+        qproperty-pixmap: url(:/Black/success);
+}
+
+QLabel#questionLabel {
+        qproperty-pixmap: url(:/Black/question);
+}
+
+QLabel#warningLabel {
+        qproperty-pixmap: url(:/Black/warning);
+}
+
+QLabel#groupLabel {
+        color: rgb(0, 160, 230);
+        border: 1px solid rgb(0, 160, 230);
+        font-size: 15px;
+        border-top-color: transparent;
+        border-right-color: transparent;
+        border-left-color: transparent;
+}
+</string>
+         </property>
          <property name="text">
           <string>姓名</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="lineEdit_2"/>
+        <widget class="QLineEdit" name="lineEdit_2">
+         <property name="styleSheet">
+          <string notr="true"> border-radius: 4px;
+        height: 25px;
+        border: 1px solid rgb(100, 100, 100);
+        background: rgb(72, 72, 73);</string>
+         </property>
+        </widget>
        </item>
        <item>
         <spacer name="horizontalSpacer_3">
@@ -193,6 +1149,78 @@
        </item>
        <item>
         <widget class="QPushButton" name="pushButton_10">
+         <property name="styleSheet">
+          <string notr="true">QPushButton{
+        border-radius: 4px;
+        border: none;
+        width: 75px;
+        height: 25px;
+}
+QPushButton:enabled {
+        background: rgb(68, 69, 73);
+        color: white;
+}
+QPushButton:!enabled {
+        background: rgb(100, 100, 100);
+        color: rgb(200, 200, 200);
+}
+QPushButton:enabled:hover{
+        background: rgb(85, 85, 85);
+}
+QPushButton:enabled:pressed{
+        background: rgb(80, 80, 80);
+}
+
+QPushButton#blueButton {
+        color: white;
+}
+QPushButton#blueButton:enabled {
+        background: rgb(0, 165, 235);
+        color: white;
+}
+QPushButton#blueButton:!enabled {
+        background: gray;
+        color: rgb(200, 200, 200);
+}
+QPushButton#blueButton:enabled:hover {
+        background: rgb(0, 180, 255);
+}
+QPushButton#blueButton:enabled:pressed {
+        background: rgb(0, 140, 215);
+}
+
+QPushButton#selectButton {
+        border: none;
+        border-radius: none;
+        border-left: 1px solid rgb(100, 100, 100);
+        image: url(:/Black/scan);
+        background: transparent;
+        color: white;
+}
+QPushButton#selectButton:enabled:hover{
+        background: rgb(85, 85, 85);
+}
+QPushButton#selectButton:enabled:pressed{
+        background: rgb(80, 80, 80);
+}
+
+QPushButton#linkButton {
+        background: transparent;
+        color: rgb(0, 160, 230);
+        text-align:left;
+}
+QPushButton#linkButton:hover {
+        color: rgb(20, 185, 255);
+        text-decoration: underline;
+}
+QPushButton#linkButton:pressed {
+        color: rgb(0, 160, 230);
+}
+
+QPushButton#transparentButton {
+        background: transparent;
+}</string>
+         </property>
          <property name="text">
           <string>匹配</string>
          </property>
@@ -213,6 +1241,78 @@
        </item>
        <item>
         <widget class="QPushButton" name="pushButton_9">
+         <property name="styleSheet">
+          <string notr="true">QPushButton{
+        border-radius: 4px;
+        border: none;
+        width: 75px;
+        height: 25px;
+}
+QPushButton:enabled {
+        background: rgb(68, 69, 73);
+        color: white;
+}
+QPushButton:!enabled {
+        background: rgb(100, 100, 100);
+        color: rgb(200, 200, 200);
+}
+QPushButton:enabled:hover{
+        background: rgb(85, 85, 85);
+}
+QPushButton:enabled:pressed{
+        background: rgb(80, 80, 80);
+}
+
+QPushButton#blueButton {
+        color: white;
+}
+QPushButton#blueButton:enabled {
+        background: rgb(0, 165, 235);
+        color: white;
+}
+QPushButton#blueButton:!enabled {
+        background: gray;
+        color: rgb(200, 200, 200);
+}
+QPushButton#blueButton:enabled:hover {
+        background: rgb(0, 180, 255);
+}
+QPushButton#blueButton:enabled:pressed {
+        background: rgb(0, 140, 215);
+}
+
+QPushButton#selectButton {
+        border: none;
+        border-radius: none;
+        border-left: 1px solid rgb(100, 100, 100);
+        image: url(:/Black/scan);
+        background: transparent;
+        color: white;
+}
+QPushButton#selectButton:enabled:hover{
+        background: rgb(85, 85, 85);
+}
+QPushButton#selectButton:enabled:pressed{
+        background: rgb(80, 80, 80);
+}
+
+QPushButton#linkButton {
+        background: transparent;
+        color: rgb(0, 160, 230);
+        text-align:left;
+}
+QPushButton#linkButton:hover {
+        color: rgb(20, 185, 255);
+        text-decoration: underline;
+}
+QPushButton#linkButton:pressed {
+        color: rgb(0, 160, 230);
+}
+
+QPushButton#transparentButton {
+        background: transparent;
+}</string>
+         </property>
          <property name="text">
           <string>查询</string>
          </property>
@@ -281,8 +1381,27 @@
      <x>0</x>
      <y>0</y>
      <width>850</width>
-     <height>23</height>
+     <height>28</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QMenuBar {
+        background: rgb(57, 58, 60);
+        border: none;
+}
+QMenuBar::item {
+        padding: 5px 10px 5px 10px;
+        background: transparent;
+}
+QMenuBar::item:enabled {
+        color: rgb(227, 234, 242);
+}
+QMenuBar::item:!enabled {
+        color: rgb(155, 155, 155);
+}
+QMenuBar::item:enabled:selected {
+        background: rgba(255, 255, 255, 40);
+}</string>
    </property>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
@@ -293,7 +1412,17 @@
     <bool>false</bool>
    </attribute>
   </widget>
-  <widget class="QStatusBar" name="statusBar"/>
+  <widget class="QStatusBar" name="statusBar">
+   <property name="styleSheet">
+    <string notr="true">QStatusBar {
+        background: rgb(57, 58, 60);
+}
+QStatusBar::item {
+        border: none;
+        border-right: 1px solid rgb(100, 100, 100);
+}</string>
+   </property>
+  </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>

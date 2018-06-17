@@ -119,7 +119,7 @@ void MainWindow::on_pushButton_9_clicked()
 
 void MainWindow::on_pushButton_10_clicked()
 {
-    QSqlQuery query = model3->query();
+    /*QSqlQuery query = model3->query();
 
     query.exec("insert name from teachers where tcid = 123123");
     QString tname = ui->lineEdit_2->text();
@@ -127,5 +127,7 @@ void MainWindow::on_pushButton_10_clicked()
     model3->setQuery("select tname from teachers where tcid = 123123 ");
 
     ui->tableView_2->setModel(model3);
+*/
+
 
 }

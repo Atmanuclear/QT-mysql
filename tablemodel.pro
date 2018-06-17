@@ -30,3 +30,6 @@ HEADERS  += mainwindow.h \
     connection.h
 
 FORMS    += mainwindow.ui
+
+RESOURCES += \
+    src.qrc
