@@ -44,6 +44,9 @@ private:
     QSqlTableModel *model;
     QSqlTableModel *model2;
     QSqlQueryModel *model3;
+    int skin;
+
 };
+
 
 #endif // MAINWINDOW_H

@@ -1,25 +1,13 @@
 #include "mainwindow.h"
 #include <QApplication>
 #include "connection.h"
-#include <QFile>
-#include <QApplication>
 #include <QMessageBox>
 
-/*lass CommonHelper
-{
-public:
-    static void setStyle(const QString &style) {
-        QFile qss(style);
-        qss.open(QFile::ReadOnly);
-        qApp->setStyleSheet(qss.readAll());
-        qss.close();
-    }
-};
-*/
+// 加载QSS样式
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-   QFile file(":/black.qss");
+    QFile file(":/style.qss");
        if( file.open(QFile::ReadOnly))
        {
            QString styleSheet = QLatin1String(file.readAll());
@@ -35,9 +23,7 @@ int main(int argc, char *argv[])
 
        }
 
-    // 加载QSS样式
 
-    //CommonHelper::setStyle("white.qss");
     if(!createConnection())
         return 1;
 

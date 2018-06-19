@@ -1,4 +1,4 @@
-QToolTip{
+
 /*
 * The MIT License (MIT)
 *
@@ -952,5 +952,4 @@ QPushButton#menuButton::menu-indicator{
         subcontrol-origin: padding;
         image: url(:/White/arrowBottom);
         padding-right: 3px;
-}
 }

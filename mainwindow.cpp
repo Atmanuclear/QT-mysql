@@ -4,6 +4,8 @@
 #include <QSqlQuery>
 #include <QSqlError>
 #include <QDebug>
+#include <QFile>
+#include <QMessageBox>
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -17,6 +19,7 @@ MainWindow::MainWindow(QWidget *parent) :
     model->setTable("student");
     model->setEditStrategy(QSqlTableModel::OnManualSubmit);
     model->select(); //选取整个表的所有行
+    skin = 0;
 
     //不显示name属性列,如果这时添加记录，则该属性的值添加不上
     // model->removeColumn(1);
@@ -127,7 +130,26 @@ void MainWindow::on_pushButton_10_clicked()
     model3->setQuery("select tname from teachers where tcid = 123123 ");
 
     ui->tableView_2->setModel(model3);
-*/
+    */
+   QString qss;
+    if(skin == 0){
+        skin = 1;
+        qss = ":/orange.qss";
+    }
+    else{
+        skin =0 ;
+         qss = ":/black.qss";
+    }
+    QFile file(qss);
 
+    file.open(QFile::ReadOnly);
+
+    if(file.isOpen())
+    {
+        QString btnstylesheet = QObject::tr(file.readAll());
+        qApp->setStyleSheet(btnstylesheet);
+        file.close();
+
+    }
 
 }
