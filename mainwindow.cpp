@@ -15,7 +15,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     model = new QSqlTableModel(this);
     model2 = new QSqlTableModel(this);
-    model3 = new QSqlQueryModel(this);
+    model3 = new QSqlTableModel(this);
     model->setTable("student");
     model->setEditStrategy(QSqlTableModel::OnManualSubmit);
     model->select(); //选取整个表的所有行
@@ -66,7 +66,7 @@ void MainWindow::on_pushButton_5_clicked()
 
 void MainWindow::on_pushButton_6_clicked()
 {
-    model->setTable("student");   //重新关联表
+    model->setTable("appointment");   //重新关联表
     model->select();
     ui->tableView->setModel(model);
     //这样才能再次显示整个表的内容
@@ -115,9 +115,46 @@ void MainWindow::on_pushButton_3_clicked()
 
 void MainWindow::on_pushButton_9_clicked()
 {
-    model2->setTable("teachers");   //重新关联表
+
+   /* model2->setTable("test");   //重新关联表
     model2->select();
     ui->tableView_2->setModel(model2);
+    */
+    QSqlQuery query;
+    sname=(ui->comboBox_2->currentIndex());
+    ui->tableView_2->setEditTriggers(QAbstractItemView::NoEditTriggers);
+
+    switch (sname) {
+    case 0:
+        model2->setTable("teachers");   //重新关联表
+        model2->select();
+        ui->tableView_2->setModel(model2);
+        break;
+    case 1:
+        model2->setTable("courses");   //重新关联表
+        model2->select();
+        ui->tableView_2->setModel(model2);
+        break;
+    case  2:
+        model2->setTable("rooms");   //重新关联表
+        model2->select();
+        ui->tableView_2->setModel(model2);
+        break;
+    case  3:
+        model2->setTable("plan");   //重新关联表
+        model2->select();
+        ui->tableView_2->setModel(model2);
+        break;
+    case  4:
+        model2->setTable("appointment");   //重新关联表
+        model2->select();
+        ui->tableView_2->setModel(model2);
+        break;
+
+    default:
+        break;
+    }
+
 }
 
 void MainWindow::on_pushButton_10_clicked()
@@ -153,3 +190,29 @@ void MainWindow::on_pushButton_10_clicked()
     }
 
 }
+
+
+void MainWindow::on_pushButton_11_clicked()
+{
+
+}
+
+
+void MainWindow::on_pushButton_12_clicked()
+{
+    QSqlQuery query;
+    query.exec("select * from view student_apt");
+    if(query.size())
+        query.exec("drop view student_apt");
+    QString csid = ui->lineEdit_2->text();
+    week=(ui->spinBox->value());
+    QString s;
+    s= QString::number(week, 10);
+    query.exec("create view student_apt(aptday,aptperiod,crsid,rmid) as select appointment.aptday,aptperiod,appointment.crsid,rmid from plan,appointment where aptweek = "+s+" and plan.crsid = appointment.crsid  and  classid = "+csid);
+    model3->setTable("student_apt");   //重新关联表
+    model3->select();
+    ui->tableView_3->setModel(model3);
+    qDebug() << "successed" << query.lastError();
+
+}
+

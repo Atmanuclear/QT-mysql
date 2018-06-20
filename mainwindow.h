@@ -39,12 +39,20 @@ private slots:
 
     void on_pushButton_10_clicked();
 
+    void on_pushButton_11_clicked();
+
+    void on_pushButton_12_clicked();
+
+    //void on_spinBox_valueChanged(int arg1);
+
 private:
     Ui::MainWindow *ui;
     QSqlTableModel *model;
     QSqlTableModel *model2;
-    QSqlQueryModel *model3;
+    QSqlTableModel *model3;
     int skin;
+    int sname;
+    int week;
 
 };
 
