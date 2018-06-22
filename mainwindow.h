@@ -63,6 +63,8 @@ private slots:
 
     void on_spinBox_valueChanged();
 
+    void Excel();
+
 private:
     Ui::MainWindow *ui;
     QSqlTableModel *model;

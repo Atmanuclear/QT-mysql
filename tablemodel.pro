@@ -4,7 +4,8 @@
 #
 #-------------------------------------------------
 
-QT       += core gui sql axcontainer #导出excel
+QT       += core gui sql
+QT       += core gui axcontainer
 
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
