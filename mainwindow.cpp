@@ -17,10 +17,12 @@ MainWindow::MainWindow(QWidget *parent) :
     model = new QSqlTableModel(this);
     model2 = new QSqlTableModel(this);
     model3 = new QSqlTableModel(this);
-    model->setTable("student");
-    model->setEditStrategy(QSqlTableModel::OnManualSubmit);
+    model->setTable("appointment");
+    model->setEditStrategy(QSqlTableModel::OnFieldChange);
     model->select(); //选取整个表的所有行
     skin = 0;
+
+    ui->tableView->setModel(model);
 
     //不显示name属性列,如果这时添加记录，则该属性的值添加不上
     // model->removeColumn(1);
@@ -42,7 +44,8 @@ void MainWindow::on_pushButton_clicked()
     model->database().transaction(); //开始事务操作
     if (model->submitAll()) {
         model->database().commit(); //提交
-    } else {
+    }
+    else {
         model->database().rollback(); //回滚
         QMessageBox::warning(this, tr("tableModel"),
                              tr("数据库错误: %1")
@@ -229,4 +232,125 @@ void MainWindow::on_pushButton_14_clicked()
     model3->select();
     ui->tableView_4->setModel(model3);
     qDebug() << "successed" << query.lastError();
+}
+
+void MainWindow::on_pushButton_11_clicked()
+{
+    QSqlQueryModel *qmodel = new QSqlQueryModel();
+
+    qmodel->setQuery("SELECT * FROM teachers");
+    for(int i = 0; i < qmodel->rowCount(); i++){
+        Teacher t;
+
+        t.tchId = qmodel->record(i).value(0).toString().toStdString();
+        teachers.push_back(t);
+    }
+
+    qmodel->setQuery("SELECT * FROM courses");
+    for(int i = 0; i < qmodel->rowCount(); i++){
+        Course c;
+        int wmin, wmax;
+        std::string tch;
+
+        c.crsId = qmodel->record(i).value(0).toString().toStdString();
+        c.crsName = qmodel->record(i).value(1).toString().toStdString();
+        tch = qmodel->record(i).value(2).toString().toStdString();
+        for(int j=0; j<teachers.size(); j++)
+            if(teachers[j].tchId == tch){
+                c.tutor = j;
+                break;
+            }
+        wmin = qmodel->record(i).value(3).toInt();
+        wmax = qmodel->record(i).value(4).toInt();
+        for(int i=wmin; i<=wmax; i++) c.tchWeek[i-1] = true;
+        c.weekcnt = qmodel->record(i).value(5).toInt();
+        c.env = qmodel->record(i).value(6).toInt();
+        c.inserted = qmodel->record(i).value(1).toInt();
+        courses.push_back(c);
+    }
+
+    qmodel->setQuery("SELECT * FROM rooms");
+    for(int i = 0; i < qmodel->rowCount(); i++){
+        Site s;
+        s.siteId = qmodel->record(i).value(0).toString().toStdString();
+        s.capacity = qmodel->record(i).value(1).toInt();
+        s.type = qmodel->record(i).value(2).toInt();
+        sites.push_back(s);
+    }
+
+    qmodel->setQuery("SELECT * FROM plan");
+    for(int i = 0; i < qmodel->rowCount(); i++){
+        std::string crsid = qmodel->record(i).value(0).toString().toStdString();
+        std::string clsid = qmodel->record(i).value(1).toString().toStdString();
+
+        bool classExist = false;
+        int clsindex;
+        for(int j = 0; j < classes.size(); j++){
+            if(classes[j].classId == clsid){
+                classExist = true;
+                clsindex = j;
+                break;
+            }
+        }
+
+        for(int j = 0; j < courses.size(); j++){
+            if(courses[j].crsId == crsid){
+                if(!classExist){
+                    classes.push_back(StuClass(clsid));
+                    clsindex = classes.size()-1;
+                }
+                courses[j].attCls.push_back(clsindex);
+                break;
+            }
+        }
+    }
+
+    qmodel->setQuery("SELECT * FROM appointment");
+    for(int i = 0; i < qmodel->rowCount(); i++){
+        Appointment app;
+        app.week = qmodel->record(i).value(0).toInt();
+        app.day = qmodel->record(i).value(1).toInt();
+        app.period = qmodel->record(i).value(2).toInt();
+
+        std::string crsid = qmodel->record(i).value(3).toString().toStdString();
+        std::string rmid = qmodel->record(i).value(4).toString().toStdString();
+
+        for(int j = 0; j < courses.size(); j++)
+            if(courses[j].crsId == crsid){
+                app.course = j;
+                break;
+            }
+
+        for(int j = 0; j < sites.size(); j++)
+            if(sites[j].siteId == rmid){
+                app.room = j;
+                break;
+            }
+    }
+    qDebug() << teachers.size();
+    qDebug() << classes.size();
+    qDebug() << courses.size();
+    qDebug() << sites.size();
+    qDebug() << appms.size();
+
+    arranging();
+    QSqlQuery *query = new QSqlQuery();
+    qDebug() << appms.size();
+    query->exec(QString("DELETE FROM appointment"));
+
+    QSqlTableModel *tmodel = new QSqlTableModel(this);
+    tmodel->setTable("appointment");
+    tmodel->setEditStrategy(QSqlTableModel::OnFieldChange);
+    int rowCount;
+    for(int i = 0; i < appms.size(); i++){
+        rowCount = tmodel->rowCount();
+        tmodel->insertRow(rowCount);
+        tmodel->setData(tmodel->index(rowCount,0),appms[i].week);
+        tmodel->setData(tmodel->index(rowCount,1),appms[i].day);
+        tmodel->setData(tmodel->index(rowCount,2),appms[i].period);
+        tmodel->setData(tmodel->index(rowCount,3),QString::fromStdString(courses[appms[i].course].crsId));
+        tmodel->setData(tmodel->index(rowCount,4),QString::fromStdString(sites[appms[i].room].siteId));
+        tmodel->submit();
+    }
+    on_pushButton_6_clicked();
 }
