@@ -1,4 +1,12 @@
 
+
+
+#MainWindow{background-image: url(:/timg.jpg);}
+#tabWidget{background-image: url(:/timg.jpg);}
+#widget{background-image: url(:/timg.jpg);}
+#tab_2{background-image: url(:/timg.jpg);}
+#tab_3{background-image: url(:/timg.jpg);}
+#tab{background-image: url(:/timg.jpg);}
 /*
 * The MIT License (MIT)
 *

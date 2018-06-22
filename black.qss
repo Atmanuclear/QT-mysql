@@ -1,3 +1,16 @@
+
+
+
+#MainWindow{background-image: url(:/black.jpg);}
+#tabWidget{background-color:rgb(0,0,0,0,);}
+#widget{background-image: url(:/black.jpg);}
+#tab_2{background-image: url(:/black.jpg);}
+#tab_3{background-image: url(:/black.jpg);}
+#tab{background-image: url(:/black.jpg);}
+#menuBar{background-image: url(:/black.jpg);}
+#mainToolBar{background-image: url(:/black.jpg);}
+#statusBar{background-image: url(:/black.jpg);}
+
 /*
 * The MIT License (MIT)
 *
@@ -10,7 +23,8 @@
 * Description : 黑色炫酷
 *
 */
-
+#tableview{background-color:rgb(0,0,0,0,);}
+#QTabBar::tab{background-color:rgb(0,0,0,0,);}
 /**********子界面背景**********/
 QWidget#customWidget {
         background: rgb(68, 69, 73);

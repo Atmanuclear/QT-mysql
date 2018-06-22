@@ -5,6 +5,7 @@
 #include <QSqlError>
 #include <QDebug>
 #include <QFile>
+#include <QDialog>
 #include <QMessageBox>
 
 
@@ -106,11 +107,15 @@ void MainWindow::on_pushButton_4_clicked()
 
 void MainWindow::on_pushButton_3_clicked()
 {
+
     int rowNum = model->rowCount(); //获得表的行数
     int id = 10;
     model->insertRow(rowNum); //添加一行
     model->setData(model->index(rowNum,0),id);
+
     //model->submitAll(); //可以直接提交
+
+
 }
 
 void MainWindow::on_pushButton_9_clicked()
@@ -157,45 +162,6 @@ void MainWindow::on_pushButton_9_clicked()
 
 }
 
-void MainWindow::on_pushButton_10_clicked()
-{
-    /*QSqlQuery query = model3->query();
-
-    query.exec("insert name from teachers where tcid = 123123");
-    QString tname = ui->lineEdit_2->text();
-
-    model3->setQuery("select tname from teachers where tcid = 123123 ");
-
-    ui->tableView_2->setModel(model3);
-    */
-   QString qss;
-    if(skin == 0){
-        skin = 1;
-        qss = ":/orange.qss";
-    }
-    else{
-        skin =0 ;
-         qss = ":/black.qss";
-    }
-    QFile file(qss);
-
-    file.open(QFile::ReadOnly);
-
-    if(file.isOpen())
-    {
-        QString btnstylesheet = QObject::tr(file.readAll());
-        qApp->setStyleSheet(btnstylesheet);
-        file.close();
-
-    }
-
-}
-
-
-void MainWindow::on_pushButton_11_clicked()
-{
-
-}
 
 
 void MainWindow::on_pushButton_12_clicked()
@@ -216,3 +182,51 @@ void MainWindow::on_pushButton_12_clicked()
 
 }
 
+
+
+void MainWindow::on_pushButton_13_clicked()
+{
+    QString qss;
+    color=(ui->comboBox->currentIndex());
+    switch (color) {
+    case 0:
+        qss = ":/black.qss";
+        break;
+    case 1:
+        qss = ":/style.qss";
+        break;
+    case 2:
+        qss = ":/orange.qss";
+        break;
+    default:
+        break;
+    }
+    QFile file(qss);
+
+    file.open(QFile::ReadOnly);
+
+    if(file.isOpen())
+    {
+        QString btnstylesheet = QObject::tr(file.readAll());
+        qApp->setStyleSheet(btnstylesheet);
+        file.close();
+
+    }
+}
+
+void MainWindow::on_pushButton_14_clicked()
+{
+    QSqlQuery query;
+    query.exec("select * from view teachers_apt");
+    if(query.size())
+        query.exec("drop view teachers_apt");
+    QString tcid = ui->lineEdit_3->text();
+    week=(ui->spinBox_2->value());
+    QString s;
+    s= QString::number(week, 10);
+    query.exec("create view teachers_apt(aptday,aptperiod,crsid,rmid) as select appointment.aptday,aptperiod,appointment.crsid,rmid from courses,appointment where aptweek = "+s+" and courses.crsid = appointment.crsid  and  tcid = "+tcid);
+    model3->setTable("teachers_apt");   //重新关联表
+    model3->select();
+    ui->tableView_4->setModel(model3);
+    qDebug() << "successed" << query.lastError();
+}

@@ -3,6 +3,7 @@
 
 #include <QtSql>
 #include <QSqlQuery>
+#include <QMessageBox>
 
 static bool createConnection()
 {
@@ -12,7 +13,11 @@ static bool createConnection()
         db.setDatabaseName("qtest");
         db.setUserName("root");
         db.setPassword("123456");
-    if(!db.open()) return false;
+    if(!db.open()) {
+        QMessageBox::critical(0, "Cannot open database",
+                              "Unable to establish a database connection.", QMessageBox::Cancel);
+        return false;
+    }
     QSqlQuery query;
     query.exec("create table student (id int primary key, name vchar)");
     query.exec("insert into student values (0,'刘明')");

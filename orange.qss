@@ -1,3 +1,16 @@
+
+
+/*#MainWindow{background-image: url(:/orange.jpg);}
+#tabWidget{background-image: url(:/orange.jpg);}
+#widget{background-image: url(:/orange.jpg);}
+#tab_2{background-image: url(:/orange.jpg);}
+#tab_3{background-image: url(:/orange.jpg);}
+#tab{background-image: url(:/orange.jpg);}
+#horizontalLayout_2{background-image: url(:/orange.jpg);}
+#verticalLayout{background-image: url(:/orange.jpg);}
+#verticalLayout_2{background-color:rgb(0,0,0,0,);}
+*/
+
 QToolTip
 {
      border: 1px solid black;

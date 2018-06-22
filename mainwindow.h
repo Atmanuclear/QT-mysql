@@ -6,6 +6,8 @@
 #include <QSqlQueryModel>
 #include <QSqlQuery>
 
+#include <QDialog>
+
 namespace Ui {
 class MainWindow;
 }
@@ -17,6 +19,10 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+
+
+
+
 
 private slots:
     void on_pushButton_clicked();
@@ -37,13 +43,19 @@ private slots:
 
     void on_pushButton_9_clicked();
 
-    void on_pushButton_10_clicked();
+    //void on_pushButton_10_clicked();
 
-    void on_pushButton_11_clicked();
+    //void on_pushButton_11_clicked();
 
     void on_pushButton_12_clicked();
 
     //void on_spinBox_valueChanged(int arg1);
+
+    //void on_comboBox_currentIndexChanged(int index);
+
+    void on_pushButton_13_clicked();
+
+    void on_pushButton_14_clicked();
 
 private:
     Ui::MainWindow *ui;
@@ -53,6 +65,7 @@ private:
     int skin;
     int sname;
     int week;
+    int color;
 
 };
 

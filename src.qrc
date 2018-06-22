@@ -3,5 +3,9 @@
         <file>black.qss</file>
         <file>orange.qss</file>
         <file>style.qss</file>
+        <file>timg.jpg</file>
+        <file>black.jpg</file>
+        <file>orange.jpg</file>
+        <file>index.jpg</file>
     </qresource>
 </RCC>
