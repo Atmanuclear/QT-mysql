@@ -4,8 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui sql
-QT       += core gui axcontainer
+QT       += core gui sql axcontainer #导出excel
 
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
@@ -27,11 +26,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    tipsdialog.cpp
+    tipsdialog.cpp \
+    Arrange.cpp
 
 HEADERS  += mainwindow.h \
     connection.h \
-    tipsdialog.h
+    tipsdialog.h \
+    Arrange.h
 
 FORMS    += mainwindow.ui \
     tipsdialog.ui
