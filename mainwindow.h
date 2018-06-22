@@ -33,13 +33,13 @@ private slots:
 
     void on_pushButton_6_clicked();
 
-    void on_pushButton_7_clicked();
+    // void on_pushButton_7_clicked();
 
-    void on_pushButton_8_clicked();
+    //void on_pushButton_8_clicked();
 
     void on_pushButton_4_clicked();
 
-    void on_pushButton_3_clicked();
+    //void on_pushButton_3_clicked();
 
     void on_pushButton_9_clicked();
 
@@ -57,11 +57,18 @@ private slots:
 
     void on_pushButton_14_clicked();
 
+    void on_insertBtn_clicked();
+
+    void on_timetable_clicked();
+
+    void on_spinBox_valueChanged();
+
 private:
     Ui::MainWindow *ui;
     QSqlTableModel *model;
     QSqlTableModel *model2;
     QSqlTableModel *model3;
+    //QTabWidget *widget;
     int skin;
     int sname;
     int week;

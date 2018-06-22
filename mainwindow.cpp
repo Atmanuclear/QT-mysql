@@ -7,17 +7,19 @@
 #include <QFile>
 #include <QDialog>
 #include <QMessageBox>
+#include <QTableWidget>
 
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
-    ui->setupUi(this);
+    ui->setupUi(this);   
     model = new QSqlTableModel(this);
     model2 = new QSqlTableModel(this);
     model3 = new QSqlTableModel(this);
-    model->setTable("student");
+    //widget = new QTableWidget(this)
+    model->setTable("appointment");
     model->setEditStrategy(QSqlTableModel::OnManualSubmit);
     model->select(); //选取整个表的所有行
     skin = 0;
@@ -73,20 +75,14 @@ void MainWindow::on_pushButton_6_clicked()
     //这样才能再次显示整个表的内容
 }
 
-// 升序
-void MainWindow::on_pushButton_7_clicked()
-{
-    //id属性即第0列，升序排列
-    model->setSort(0, Qt::AscendingOrder);
-    model->select();
-}
+
 // 降序
-void MainWindow::on_pushButton_8_clicked()
+/*void MainWindow::on_pushButton_8_clicked()
 {
     model->setSort(0, Qt::DescendingOrder);
     model->select();
 }
-
+*/
 void MainWindow::on_pushButton_4_clicked()
 {
     //获取选中的行
@@ -105,18 +101,7 @@ void MainWindow::on_pushButton_4_clicked()
     else model->submitAll(); //否则提交，在数据库中删除该行
 }
 
-void MainWindow::on_pushButton_3_clicked()
-{
 
-    int rowNum = model->rowCount(); //获得表的行数
-    int id = 10;
-    model->insertRow(rowNum); //添加一行
-    model->setData(model->index(rowNum,0),id);
-
-    //model->submitAll(); //可以直接提交
-
-
-}
 
 void MainWindow::on_pushButton_9_clicked()
 {
@@ -229,4 +214,60 @@ void MainWindow::on_pushButton_14_clicked()
     model3->select();
     ui->tableView_4->setModel(model3);
     qDebug() << "successed" << query.lastError();
+}
+
+void MainWindow::on_insertBtn_clicked()
+{
+
+    int rowNum = model->rowCount(); //获得表的行数
+    int id = 10;
+    model->insertRow(rowNum); //添加一行
+    model->setData(model->index(rowNum,0),id);
+
+    //model->submitAll(); //可以直接提交
+}
+
+void MainWindow::on_timetable_clicked()
+{
+      qDebug()<<"132";
+    ui->tableWidget->setColumnCount(5);
+    ui->tableWidget->setRowCount(4);
+
+    QStringList headers;
+    headers << "星期一" << "星期二"<< "星期三" << "星期四" << "星期五" << "**";
+    ui->tableWidget->setHorizontalHeaderLabels(headers);
+    QString tcid = ui->lineEdit_3->text();
+    week=(ui->spinBox_2->value());
+    QString s;
+    QString t;
+    QSqlQuery query;
+    s= QString::number(week, 10);
+    query.exec("select appointment.aptday,aptperiod,appointment.crsid,rmid from courses,appointment where aptweek = "+s+" and courses.crsid = appointment.crsid  and  tcid = "+tcid);
+    //QTableWidgetItem *item=new QTableWidgetItem(4,4);
+
+    //t=query.value(1).toString();
+    t="英语课";
+
+    qDebug() <<"123"<< query.lastError();
+    /*int i,j=0;
+    for(i,i<6,i++){
+        for(j,j<4,j++);{
+            ui->tableWidget->setItem(i, j, new QTableWidgetItem(t));
+        }
+    }
+    */
+    //ui->tableWidget->setItem(3, 3, new QTableWidgetItem(t));
+
+    ui->tableWidget->setItem(2, 0, new QTableWidgetItem(QString("0003")));
+    ui->tableWidget->setItem(3, 0, new QTableWidgetItem(QString("0004")));
+    ui->tableWidget->setItem(4, 0, new QTableWidgetItem(QString("0005")));
+    ui->tableWidget->setItem(0, 1, new QTableWidgetItem(QString("20100112232133123123")));
+
+    ui->tableWidget->show();
+
+}
+
+void MainWindow::on_spinBox_valueChanged()
+{
+    on_pushButton_12_clicked();
 }

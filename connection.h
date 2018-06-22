@@ -8,11 +8,18 @@
 static bool createConnection()
 {
     QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");
-        db.setHostName("localhost");
+        db.setHostName("10.236.51.145"); //10.236.51.14
         db.setPort(3306);
         db.setDatabaseName("qtest");
-        db.setUserName("root");
-        db.setPassword("123456");
+        db.setUserName("admin");
+        db.setPassword("admin");
+       /* QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");
+            db.setHostName("10.236.51.145"); //10.236.51.14
+            db.setPort(3306);
+            db.setDatabaseName("qtest");
+            db.setUserName("admin");
+            db.setPassword("admin");
+            */
     if(!db.open()) {
         QMessageBox::critical(0, "Cannot open database",
                               "Unable to establish a database connection.", QMessageBox::Cancel);

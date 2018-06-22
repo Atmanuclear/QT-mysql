@@ -7,6 +7,10 @@
 #tab_2{background-image: url(:/timg.jpg);}
 #tab_3{background-image: url(:/timg.jpg);}
 #tab{background-image: url(:/timg.jpg);}
+#menuBar{background-image: url(:/timg.jpg);}
+#mainToolBar{background-image: url(:/timg.jpg);}
+#statusBar{background-image: url(:/timg.jpg);}
+
 /*
 * The MIT License (MIT)
 *

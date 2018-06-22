@@ -6,15 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>929</width>
-    <height>624</height>
+    <width>1070</width>
+    <height>678</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true"/>
+   <string notr="true">font: 16pt &quot;华文新魏&quot;;</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <property name="styleSheet">
@@ -25,15 +25,15 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>931</width>
-      <height>571</height>
+      <width>1101</width>
+      <height>631</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true"/>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="widget">
      <property name="styleSheet">
@@ -47,8 +47,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>731</width>
-        <height>381</height>
+        <width>851</width>
+        <height>441</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -58,7 +58,7 @@
      <widget class="QWidget" name="verticalLayoutWidget">
       <property name="geometry">
        <rect>
-        <x>780</x>
+        <x>900</x>
         <y>10</y>
         <width>131</width>
         <height>341</height>
@@ -86,7 +86,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_3">
+        <widget class="QPushButton" name="insertBtn">
          <property name="styleSheet">
           <string notr="true"/>
          </property>
@@ -111,8 +111,8 @@
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>390</y>
-        <width>581</width>
+        <y>440</y>
+        <width>651</width>
         <height>80</height>
        </rect>
       </property>
@@ -197,7 +197,7 @@
          <x>10</x>
          <y>20</y>
          <width>77</width>
-         <height>61</height>
+         <height>64</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -246,8 +246,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>741</width>
-        <height>371</height>
+        <width>881</width>
+        <height>421</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -258,8 +258,8 @@
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>370</y>
-        <width>741</width>
+        <y>440</y>
+        <width>881</width>
         <height>80</height>
        </rect>
       </property>
@@ -406,8 +406,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>741</width>
-        <height>371</height>
+        <width>461</width>
+        <height>391</height>
        </rect>
       </property>
      </widget>
@@ -415,8 +415,8 @@
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>370</y>
-        <width>741</width>
+        <y>450</y>
+        <width>1081</width>
         <height>80</height>
        </rect>
       </property>
@@ -494,7 +494,14 @@ color: rgb(255, 255, 255);</string>
        <item>
         <widget class="QPushButton" name="pushButton_12">
          <property name="text">
-          <string>查询</string>
+          <string>查询选课</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="timetable">
+         <property name="text">
+          <string>课表显示</string>
          </property>
         </widget>
        </item>
@@ -513,6 +520,19 @@ color: rgb(255, 255, 255);</string>
        </item>
       </layout>
      </widget>
+     <widget class="QTableWidget" name="tableWidget">
+      <property name="geometry">
+       <rect>
+        <x>460</x>
+        <y>0</y>
+        <width>621</width>
+        <height>391</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 16pt &quot;华文新魏&quot;;</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -522,8 +542,8 @@ color: rgb(255, 255, 255);</string>
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>370</y>
-        <width>741</width>
+        <y>420</y>
+        <width>911</width>
         <height>80</height>
        </rect>
       </property>
@@ -624,8 +644,8 @@ color: rgb(255, 255, 255);</string>
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>741</width>
-        <height>371</height>
+        <width>911</width>
+        <height>421</height>
        </rect>
       </property>
      </widget>
@@ -637,8 +657,8 @@ color: rgb(255, 255, 255);</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>929</width>
-     <height>23</height>
+     <width>1070</width>
+     <height>27</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -661,22 +681,5 @@ color: rgb(255, 255, 255);</string>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>
- <connections>
-  <connection>
-   <sender>pushButton_3</sender>
-   <signal>clicked()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>hide()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>847</x>
-     <y>208</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>502</x>
-     <y>320</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>
