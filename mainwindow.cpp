@@ -182,7 +182,6 @@ void MainWindow::on_pushButton_12_clicked()
     model3->select();
     ui->tableView_3->setModel(model3);
     qDebug() << "successed" << query.lastError();
-
 }
 
 
