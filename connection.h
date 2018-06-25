@@ -12,7 +12,7 @@ static bool createConnection()
         db.setPort(3306);
         db.setDatabaseName("qtest");
         db.setUserName("root");
-        db.setPassword("admin");
+        db.setPassword("123456");
     if(!db.open()) {
         QMessageBox::critical(0, "Cannot open database",
                               "Unable to establish a database connection.", QMessageBox::Cancel);
