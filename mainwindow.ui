@@ -40,7 +40,7 @@
       <string notr="true"/>
      </property>
      <attribute name="title">
-      <string> 课表查询</string>
+      <string> 查看信息表</string>
      </attribute>
      <widget class="QTableView" name="tableView_2">
       <property name="geometry">
@@ -260,7 +260,7 @@
       <string notr="true"/>
      </property>
      <attribute name="title">
-      <string>预排课系统</string>
+      <string>排课</string>
      </attribute>
      <widget class="QTableView" name="tableView">
       <property name="geometry">
@@ -399,7 +399,7 @@
     </widget>
     <widget class="QWidget" name="tab_3">
      <attribute name="title">
-      <string>学生排课查询</string>
+      <string>排课结果</string>
      </attribute>
      <widget class="QTableView" name="tableView_3">
       <property name="geometry">
@@ -549,7 +549,7 @@ color: rgb(255, 255, 255);</string>
     </widget>
     <widget class="QWidget" name="tab">
      <attribute name="title">
-      <string>老师排课查询</string>
+      <string>创建活动</string>
      </attribute>
      <widget class="QWidget" name="horizontalLayoutWidget_4">
       <property name="geometry">
@@ -662,6 +662,11 @@ color: rgb(255, 255, 255);</string>
        </rect>
       </property>
      </widget>
+    </widget>
+    <widget class="QWidget" name="tab_4">
+     <attribute name="title">
+      <string>页</string>
+     </attribute>
     </widget>
    </widget>
   </widget>

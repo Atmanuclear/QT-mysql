@@ -40,7 +40,7 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-
+//预排课系统：提交修改
 void MainWindow::on_pushButton_clicked()
 {
     model->database().transaction(); //开始事务操作
@@ -55,12 +55,13 @@ void MainWindow::on_pushButton_clicked()
     }
 }
 
-
+//预排课系统：撤销修改
 void MainWindow::on_pushButton_2_clicked()
 {
     model->revertAll();
 }
 
+//预排课系统：查询
 void MainWindow::on_pushButton_5_clicked()
 {
     QString name = ui->lineEdit->text();
@@ -70,6 +71,7 @@ void MainWindow::on_pushButton_5_clicked()
     model->select();
 }
 
+//预排课系统：显示全表
 void MainWindow::on_pushButton_6_clicked()
 {
     model->setTable("appointment");   //重新关联表
@@ -79,6 +81,7 @@ void MainWindow::on_pushButton_6_clicked()
 }
 
 // 升序
+//学生排课查询：导出到Excel
 void MainWindow::on_pushButton_7_clicked()
 {
     //id属性即第0列，升序排列
@@ -91,6 +94,7 @@ void MainWindow::on_pushButton_8_clicked()
     model->select();
 }
 
+//预排课系统：删除
 void MainWindow::on_pushButton_4_clicked()
 {
     //获取选中的行
@@ -109,6 +113,7 @@ void MainWindow::on_pushButton_4_clicked()
     else model->submitAll(); //否则提交，在数据库中删除该行
 }
 
+//预排课系统：插入
 void MainWindow::on_pushButton_3_clicked()
 {
 
@@ -122,6 +127,7 @@ void MainWindow::on_pushButton_3_clicked()
 
 }
 
+//表查询页：查询
 void MainWindow::on_pushButton_9_clicked()
 {
 
@@ -167,7 +173,7 @@ void MainWindow::on_pushButton_9_clicked()
 }
 
 
-
+//学生排课查询：查询
 void MainWindow::on_pushButton_12_clicked()
 {
     QSqlQuery query;
@@ -186,7 +192,7 @@ void MainWindow::on_pushButton_12_clicked()
 }
 
 
-
+//换肤
 void MainWindow::on_pushButton_13_clicked()
 {
     QString qss;
@@ -234,6 +240,7 @@ void MainWindow::on_pushButton_14_clicked()
     qDebug() << "successed" << query.lastError();
 }
 
+//预排课系统：排课
 void MainWindow::on_pushButton_11_clicked()
 {
     QSqlQueryModel *qmodel = new QSqlQueryModel();
@@ -355,6 +362,7 @@ void MainWindow::on_pushButton_11_clicked()
     on_pushButton_6_clicked();
 }
 
+//学生课表查询：显示课表
 void MainWindow::on_TimeTableBtn_clicked(){
 
     QSqlQuery query;

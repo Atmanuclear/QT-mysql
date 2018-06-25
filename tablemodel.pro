@@ -27,7 +27,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += main.cpp\
         mainwindow.cpp \
     tipsdialog.cpp \
-    Arrange.cpp
+    Arrange.cpp \
+    connection.cpp
 
 HEADERS  += mainwindow.h \
     connection.h \
