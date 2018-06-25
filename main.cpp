@@ -21,6 +21,9 @@ int main(int argc, char *argv[])
 
     TipsDialog dlg;
     MainWindow w;
+    dlg.setWindowTitle("登录");
+    w.setWindowTitle("HIT教务排课系统");
+
     /*
     if(dlg.exec() == QDialog::Accepted) // 利用Accepted返回值判断按钮是否被按下
     {
