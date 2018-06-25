@@ -2,11 +2,10 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <QSqlTableModel>
-#include <QSqlQueryModel>
-#include <QSqlQuery>
-
+#include <QtSql>
 #include <QDialog>
+
+#include "Arrange.h"
 
 namespace Ui {
 class MainWindow;
@@ -56,6 +55,14 @@ private slots:
     void on_pushButton_13_clicked();
 
     void on_pushButton_14_clicked();
+
+    void on_pushButton_11_clicked();
+
+    void on_TimeTableBtn_clicked();
+
+    void on_spinBox_valueChanged(int arg1);
+
+    void Excel();   //excel导出 Buttton 对应的导出Excel操作
 
 private:
     Ui::MainWindow *ui;
