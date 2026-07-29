@@ -26,11 +26,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    tipsdialog.cpp
+    tipsdialog.cpp \
+    Arrange.cpp
 
 HEADERS  += mainwindow.h \
     connection.h \
-    tipsdialog.h
+    tipsdialog.h \
+    Arrange.h
 
 FORMS    += mainwindow.ui \
     tipsdialog.ui
